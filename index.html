@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ICANCONNECT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <!-- <link href="lib/animate/animate.min.css" rel="stylesheet"> -->
+    <!-- <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L04QFJYBLJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-L04QFJYBLJ');
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="loading" style="display: none;">
+        <div class="loader"></div>
+        <p class="loading-text">ICANCONNECT đang tải dữ liệu...</p>
+    </div>
+
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <img src="https://www.icanconnect.vn/_next/image?url=https%3A%2F%2Fs3.icankid.io%2Fmedia%2Fweb%2Fican-connect%2FICanConnect-logo.png&w=256&q=75"
+                        alt="Logo" class="logo">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="banner-container">
+        <img src="img/banner.jpg" alt="Banner" class="banner-image">
+        <div class="banner-overlay">
+            <a href="javascript:void(0)" class="btn btn-white" onclick="scrollToForm()">Nhấn để bắt đầu</a>
+        </div>
+    </div>
+
+    <!-- <div class="container-fluid py-3" id="buoc1">
+        <div class="container">
+            <div class="p-2 bg-light rounded">
+                <div class="progress-indicator">
+                    <div id="step1" class="step active">
+                        <div class="circle">1</div>
+                        Xác nhận thông tin
+                    </div>
+                    <div class="divider"></div>
+                    <div id="step2" class="step">
+                        <div class="circle">2</div>
+                        Đặt lịch học
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <!-- Contact Start -->
+    <div  id="contentForm" class="container-fluid mb-5">
+        <div class="container">
+            <div class="p-5 bg-light rounded">
+                <div class="row">
+                    <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 1500px;">
+                        <h4
+                            class="text-primary mb-1 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                            Chúc mừng Học viên đã hoàn thành khóa học, trung tâm xin thông báo lịch học tiếp theo của
+                            học viên như sau:
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <form id="formSection">
+
+                            <input type="text" class="form-control py-3 border-secondary col-9" id="Id" hidden>
+                            <input type="text" class="form-control py-3 border-secondary col-9" id="maHV" hidden>
+                            <!-- <input type="text" class="form-control py-3 border-secondary col-9" id="maLopMoi" hidden> 
+                            <input type="text" class="form-control py-3 border-secondary col-9" id="sanPham" hidden>
+                            <input type="text" class="form-control py-3 border-secondary col-9" id="thu" hidden> 
+                            <input type="text" class="form-control py-3 border-secondary col-9" id="lichHocMoi" hidden>  -->
+                            <input type="text" class="form-control py-3 border-secondary col-9" id="status" hidden>
+                               
+                            <!-- B. Thông tin học viên -->
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h4 style="color: #00509f;">A. Thông tin học viên</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Họ và tên học viên:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="hoTenHocVien"
+                                                placeholder="Họ và tên học viên" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Số điện thoại học viên:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="sdtHocVien"
+                                                placeholder="Số điện thoại học viên" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Email học viên:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="email" class="form-control" id="emailHocVien"
+                                                placeholder="Email học viên" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Thông tin khóa học -->
+                            <div class="card mt-3 mb-3">
+                                <div class="card-header">
+                                    <h4 style="color: #00509f;">B. Thông tin khóa học hiện tại</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Chương trình học:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="tenSanPham"
+                                                placeholder="Chương trình học tập" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Trình độ hiện tại:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="trinhDo"
+                                                placeholder="Trình độ hiện tại" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Sĩ số:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="size" placeholder="size lớp"
+                                                disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Giáo viên:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="loaiGiaoVien"
+                                                placeholder="Loại giáo viên" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Số buổi:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="soBuoi" placeholder="Số buổi"
+                                                disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Mã Lớp hiện tại:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="maLop" placeholder="Mã lớp hiện tại"
+                                                disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- C. Thông tin lịch học mới -->
+                            <div class="card mt-3 mb-3">
+                                <div class="card-header">
+                                    <h4 style="color: #00509f;">C. Thông tin khóa học tiếp theo:</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Trình độ tiếp theo:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="trinhDoMoi"
+                                                placeholder="Nhập trình độ mới" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Bạn đã được giữ lịch học:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="lichHocMoi"
+                                                placeholder="Lịch học mới" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Mã Lớp tiếp theo:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="maLopMoi"
+                                                placeholder="Mã lớp tiếp theo" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-12 form-label">Ngày dự kiến khai giảng:</label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="text" class="form-control" id="ngayKhaiGiangMoi"
+                                                placeholder="Ngày khai Giảng dự kiến" disabled>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-start ">
+                                <button class="btn btn-secondary btn-sm" type="button" id="editBtn" onclick="fetchAndCompareData()">Chọn lịch
+                                    khác</button>
+                            </div>
+                            <div class="d-flex justify-content-end ">
+                                <button class="btn btn-primary btn-sm" type="button" id="confirmBtn">Xác nhận lịch học khóa tiếp theo</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Table -->
+    <div id="contentTable" class="container-fluid py-5" style="display: none;">
+        <div class="container py-5">
+            <div class="p-5 bg-light rounded">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 text-center wow fadeIn mb-4" data-wow-delay="0.1s">
+                        <h4
+                            class="text-primary mb-5 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                            Chọn lịch học mới
+                        </h4>
+                        <p class="text-dark mt-4 mb-3 text-start" style="font-weight: bold;">
+                            - Học viên đã xác nhận lịch học mới cho lớp chuyển khóa thành công.
+                        </p>
+                        <p class="text-dark mt-4 mb-3 text-start" style="font-weight: bold;">
+                            - Đối với lịch trên là lịch chuyển giao giữa hai lớp, phía trung tâm đã xếp sẵn cho học
+                            viên, chọn lịch học khác chỉ đối với những học viên chưa có lịch sẵn
+                        </p>
+                        <p class="text-dark mb-3 text-start" style="font-weight: bold;">
+                            Khi đã học viên đã xác nhận lịch học mới thành công, học viên không được sửa lịch học
+                        </p>
+                        <p class="text-dark mb-3 text-start" style="font-weight: bold;">
+                            Trong trường hợp học viên muốn sửa lịch vui lòng quét mã QR bên cạnh để kết nối với
+                            ICANCONNECT
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center wow fadeIn mb-4" data-wow-delay="0.1s">
+                        <img src="https://lh3.googleusercontent.com/fife/ALs6j_HksAOVlfEwwhHLHm8MwvL-tCqAXR6NnPtczm-VtYyRDEEcwnxFCXR_GRAB1gaCXwCo7uPt4n8wVkGRhv3ozhU2h92-enCf5oGTAihs1Bufvop7tM9eCPXtQEl8NSbmP9jGd0dsuZQ1oErHe47XFXYo4OxcVKS-x6VkQTdWu6L3zhixQpZgLs4mYe9ob4_C1yen-ALuyTvmqDrs7EZzmUvnlhm0JEw0xcOEpybL7NAwWBO-0Ksx39BZelFRiDmNSs1CbLAdCtr8UQr5VcCUWARmEU_WKcWxhxgpKaw09c4TO13B8g-2qRVo-coRe9LjMmyvVnrTP-OPToRZ63n_ZXkSEFqP_kchF9oPrwMv1RPuLx3AJiaZuncQvYyEklhPIjwn5qSqMv9YKPLXHAATLMzZjGkNjufEn9YZWRTP358oxslF-KGTybqPV6VlmR2OcAx8DzBKQm3eQH-dNgcBTSj4SL1Hr81dMLzTDtfN10zHPI9qDTfxZ7O2ITRYswQUXVnQLGOsDTXjFLL8ismi1FNiZWsMteBgstrpFVBU0N2r-v8i4lQyt71Q_Yw0z_rxlqM2IE3wPMU35TcG8BSCpUI7eD8fx21T0EGDgTG_j6dzRxU_1vbgpIDLJnL2QY-8IErMQoxgOjVG7ZNnVaeVI4wQx2I47CuE8OT0NXVzEDl9J3EHdSl0EYdGwz_mFZS3gSYqjplcyLpnU0f_yPTh28aC3sRNgvG2_BKOpN_evvV1-B41zLNtZai_L9e5no_KNimLNkNqA1gM11o5pVwRFc5guYWucZkYuTYsFRa3dg76vInGcmBaOnRbC7BwlZM3P38Z2wmpb32lrgGK74xdjC5BFtGkX8roqc8VK8FzJuUOZbze5-m53LrCRGDRd5212p00MyQS9oL0cZ6VKxykrYwxSTiyZK5cX6m-Lfkejm4sYqh4Lyp4M660JKrxMQBbeoAzxAG9Sycr2OCTkLHeyQujOX8zVmAGnhMwHhR_ZJpkm33gq5u0605hk7RphHjuJhtGNcXs299YEozgd3NSRxCNRbyp6hMLPpzsAhbOa4N7pyVr1YqPRu8ZujAKkXhOnekduufSS71eTp4_u8AuQnShx-xNpP8-MW_nhoFMHkjmjo-xIMaGC9HrpNsqIGxYuV6yDR0ehYI52d9lT-9BEYAjX2OOUjfnlu3raBX9YvVB2AFc9aTXTBS8OsLWBoDEDQQImFMRnuCM0olnDEIThKKyrL7x8_7zEc13OBy88VWw54IeVhVu3ZM4wlQISFfAjinf2oNebgF-KW6eLTxR1bbS3PdATIQtX2jTOPuKRreMZFbeYVBgY1hN-MTlJUmg2-40ZLv8toxYE1S0EGCximNxAq0Vi3jT4ekiAabiAZVtZajdAaLO_5f2b3vjocFm1kJi2UIvoqkqP0127cSLJ04_nstQWpQPmr7vXMNuNuF-SXIAMOPgNj24me6Pcyz99UIlM7HJl17QANQoMdHrfkOLRTWQqn-z2Nt-xON-k7xnUfZcWBWx-qtQI0JRjdJYeYeVUVcbYWKN52n4Y61NA58EaWSy36vUII8GXzGR3xsXKDg_DGJJGN7l1ykJ0hWHbpDqFyfoPMUuysDvDWp4wg=w1920-h919"
+                            alt="ICANCONNECT" class="img-fluid mb-3" style="max-width: 80%; height: auto;" />
+                        <p class="text-primary mt-3 mb-3" style="font-weight: bold;">OA - ICANCONNECT</p>
+                        <p class="text-dark mb-4" style="font-weight: bold;">Mở Zalo, bấm quét QR và xem
+                            trên
+                            điện thoại</p>
+                    </div>
+                </div>
+
+                <div class="row g-5">
+                    <div class="col-12 wow fadeIn" data-wow-delay="0.3s" id="tableLichHoc">
+                        <h1 class="mb-4 mt-4 text-center"
+                            style="color: #00509f; text-transform: uppercase; font-weight: 700; font-family: 'Montserrat', sans-serif;"
+                            id="thongBaoLich">Lịch học</h1>
+                        <div id="registrationMessage" class="alert alert-success"
+                            style="display: none; text-align: center;">
+                            Bạn đã xác nhận lịch học mới thành công, nếu muốn thay đổi lịch học vui lòng liên hệ zalo
+                            của
+                            ICANCONNECT để được hỗ trợ.
+                        </div>
+                        <!-- Sử dụng table-responsive để cuộn bảng -->
+                        <div class="table-scroll">
+                            <div class="table-responsive">
+                                <table class="table table-bordered text-center" id="tableSection">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Mã lớp</th>
+                                            <th>Lịch học</th>
+                                            <th>Lịch khai giảng dự kiến</th>
+                                            <th>Hành động</th> <!-- Đảm bảo giữ cột Hành động -->
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                        <!-- Rows will be dynamically populated here -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Table -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright bg-dark py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>ICANCONNECT
+                            ©
+                            2023.</a>, All right reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary border-3 border-secondary rounded-circle back-to-top"><i
+            class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script> -->
+    <!-- <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script> -->
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
